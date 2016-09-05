@@ -43,12 +43,9 @@ def test_consume_3():
     assert words == 3
     assert lines == 1
 
-def test_consume_4():
-    # check something tricky: whitespace at beginning & end of line
-    testfile = _make_testfile('sometext.txt', ' a b c ee')
-    chars, words, lines = wordcount_lib.consume(testfile)
-
-    assert chars == 9                     # includes whitespace in char count
-    assert words == 4
-    assert lines == 1
-    
+def test_daaaangerous():
+    try:
+        wordcount_lib.daaaangerous()
+        assert False
+    except ZeroDivisionError as e:
+        assert True, 'Should throw divide by zero error'
